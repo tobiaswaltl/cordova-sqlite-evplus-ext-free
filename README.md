@@ -256,7 +256,7 @@ The Windows platform can present a number of challenges which increase when usin
 Use the following command to install this plugin from the Cordova CLI:
 
 ```shell
-cordova plugin add https://github.com/litehelpers/cordova-sqlite-evcore-legacy-ext-common-free # --save RECOMMENDED for Cordova CLI pre-7.0
+cordova plugin add https://github.com/brodybits/cordova-sqlite-evplus-ext-free # --save RECOMMENDED for Cordova CLI pre-7.0
 ```
 
 Add any desired platform(s) if not already present, for example:
@@ -354,7 +354,7 @@ In case you get stuck with something please read through the [support](#support)
 
 - <https://phonegappro.com/tutorials/phonegap-sqlite-tutorial-with-example-apache-cordova/>
 
-**NOTICE:** The above tutorial shows `cordova plugin add cordova-sqlite-storage` with the `--save` flag missing. Please be sure to use the `--save` flag to keep the plugins in `config.xml` _in case of Cordova CLI pre-7.0 (automatic starting with Cordova CLI 7.0)_.
+**NOTICE:** The above tutorial shows _the `cordova plugin add` command_ with the `--save` flag missing. Please be sure to use the `--save` flag to keep the plugins in `config.xml` _in case of Cordova CLI pre-7.0 (automatic starting with Cordova CLI 7.0)_.
 
 Other plugin tutorials wanted ref: [litehelpers/Cordova-sqlite-storage#609](https://github.com/litehelpers/Cordova-sqlite-storage/issues/609)
 
@@ -1251,7 +1251,7 @@ Other resource (apparently for Ionic 1): <https://www.packtpub.com/books/content
 ## Easy installation with Cordova CLI tool
 
 ```shell
-cordova plugin add https://github.com/litehelpers/cordova-sqlite-evcore-legacy-ext-common-free # --save RECOMMENDED for Cordova CLI pre-7.0
+cordova plugin add https://github.com/brodybits/cordova-sqlite-evplus-ext-free # --save RECOMMENDED for Cordova CLI pre-7.0
 ```
 
 **Additional Cordova CLI NOTES:**
