@@ -492,19 +492,17 @@ var mytests = function() {
 
     var suiteName = 'plugin: ';
 
-        it('Open plugin database with Web SQL parameters - XXX [DEPRECATED] NOT REJECTED in this plugin version', function(done) {
+        it('Open plugin database with Web SQL parameters - REJECTED AGAIN in this plugin version', function(done) {
           try {
             // EXPECTED to throw:
             var db = window.sqlitePlugin.openDatabase('open-with-web-sql-parameters-test.db', '1.0', 'test', DEFAULT_SIZE);
 
-            // XXX EXPECTED RESULT in this plugin version:
-            // expect(false).toBe(true);
-            expect(db).toBeDefined();
+            // NO LONGER EXPECTED in this plugin version:
+            // expect(db).toBeDefined();
+            expect(false).toBe(true);
             done();
           } catch (e) {
-            // XXX NOT EXPECTED in this plugin version:
-            expect(false).toBe(true);
-            // XXX also check:
+            // EXPECTED RESULT [REJECTED AGAIN] in this plugin version:
             expect(e).toBeDefined();
             done();
           }
@@ -537,12 +535,11 @@ var mytests = function() {
           }
         }, MYTIMEOUT);
 
-        it(suiteName + 'Open with no location setting (XXX [DEPRECATED] NOT REJECTED in this plugin version)', function(done) {
+        it(suiteName + 'Open with no location setting (REJECTED AGAIN in this plugin version)', function(done) {
           try {
             window.sqlitePlugin.openDatabase({ name: 'open-with-no-location-setting.db' }, function(db) {
-              // XXX EXPECTED RESULT in this plugin version:
-              // expect(false).toBe(true);
-              expect(true).toBe(true);
+              // NO LONGER EXPECTED in this plugin version:
+              expect(false).toBe(true);
 
               // Close (plugin) & finish:
               db.close(done, done);
@@ -555,9 +552,8 @@ var mytests = function() {
               done();
             });
           } catch (e) {
-            // XXX NOT EXPECTED in this plugin version:
-            // expect(true).toBe(true);
-            expect(false).toBe(true);
+            // EXPECTED RESULT [REJECTED AGAIN] in this plugin version:
+            expect(e).toBeDefined();
 
             done();
           }
@@ -749,12 +745,11 @@ var mytests = function() {
           }
         }, MYTIMEOUT);
 
-        it(suiteName + 'Open with location: null (XXX [DEPRECATED] NOT REJECTED in this plugin version)', function(done) {
+        it(suiteName + 'Open with location: null (REJECTED AGAIN in this plugin version)', function(done) {
           try {
             window.sqlitePlugin.openDatabase({ name: 'open-with-location-null.db', location: null }, function(db) {
-              // XXX EXPECTED RESULT in this plugin version:
-              // expect(false).toBe(true);
-              expect(true).toBe(true);
+              // NO LONGER EXPECTED in this plugin version:
+              expect(false).toBe(true);
 
               // Close (plugin) & finish:
               db.close(done, done);
@@ -766,22 +761,20 @@ var mytests = function() {
               done();
             });
           } catch (e) {
-            // XXX NOT EXPECTED in this plugin version:
-            // expect(true).toBe(true);
-            expect(false).toBe(true);
+            // EXPECTED RESULT [REJECTED AGAIN] in this plugin version:
+            expect(e).toBeDefined();
             done();
           }
         }, MYTIMEOUT);
 
-        it(suiteName + 'Open with iosDatabaseLocation: null (XXX [DEPRECATED] NOT REJECTED in this plugin version)', function(done) {
+        it(suiteName + 'Open with iosDatabaseLocation: null (REJECTED AGAIN in this plugin version)', function(done) {
           try {
             window.sqlitePlugin.openDatabase({
               name: 'open-with-iosDatabaseLocation-null.db',
               iosDatabaseLocation: null
             }, function(db) {
-              // XXX EXPECTED RESULT in this plugin version:
-              // expect(false).toBe(true);
-              expect(true).toBe(true);
+              // NO LONGER EXPECTED in this plugin version:
+              expect(false).toBe(true);
 
               // Close (plugin) & finish:
               db.close(done, done);
@@ -793,10 +786,14 @@ var mytests = function() {
 
               done();
             });
-          } catch (e) {
-            // XXX NOT EXPECTED in this plugin version:
-            // expect(true).toBe(true);
+
+            // XXX NOT EXPECTED TO GET HERE [window.sqlitePlugin.openDatabase did not throw]
             expect(false).toBe(true);
+            // XXX ... and stop this test
+            done();
+          } catch (e) {
+            // EXPECTED RESULT [REJECTED AGAIN] in this plugin version:
+            expect(e).toBeDefined();
             done();
           }
         }, MYTIMEOUT);
@@ -821,11 +818,18 @@ var mytests = function() {
               // Close (plugin) & finish:
               db.close(done, done);
             }, function(error) {
-              // XXX EXPECTED RESULT (DID NOT THROW EXCEPTION):
+              // XXX NOT EXPECTED (DID NOT REPORT EXCEPTION):
+              expect(false).toBe(true);
+              // XXX also check:
               expect(error).toBeDefined();
 
               done();
             });
+
+            // XXX NOT EXPECTED - window.sqlitePlugin.deleteDatabase did not throw
+            expect(false).toBe(true);
+            // XXX ... and stop this test
+            done();
           } catch (e) {
             // EXPECTED RESULT: stopped by the implementation
             expect(true).toBe(true);
@@ -834,62 +838,11 @@ var mytests = function() {
           }
         }, MYTIMEOUT);
 
-        it(suiteName + 'sqlitePlugin.deleteDatabase with no location setting (XXX [DEPRECATED] DOES NOT THROW EXCEPTION in this plugin version)', function(done) {
+        it(suiteName + 'sqlitePlugin.deleteDatabase with no location setting (REJECTED AGAIN in this plugin version)', function(done) {
           try {
             // FUTURE TBD test without callbacks?
             window.sqlitePlugin.deleteDatabase({name: 'my.db'}, function() {
               // XXX NOT EXPECTED (DID NOT REPORT FAILURE):
-              expect(false).toBe(true);
-
-              // Close (plugin) & finish:
-              db.close(done, done);
-            }, function(error) {
-              // XXX EXPECTED RESULT (DID NOT THROW EXCEPTION):
-              expect(error).toBeDefined();
-
-              done();
-            });
-          } catch (e) {
-            // EXPECTED RESULT: stopped by the implementation
-            expect(true).toBe(true);
-
-            done();
-          }
-        }, MYTIMEOUT);
-
-        it(suiteName + 'sqlitePlugin.deleteDatabase with string parameter (XXX [DEPRECATED] DOES NOT THROW EXCEPTION in this plugin version)', function(done) {
-          try {
-            window.sqlitePlugin.deleteDatabase('my.db', function() {
-              // XXX NOT EXPECTED (DID NOT REPORT FAILURE):
-              expect(false).toBe(true);
-
-              // Close (plugin) & finish:
-              db.close(done, done);
-            }, function(error) {
-              // XXX EXPECTED RESULT (DID NOT THROW EXCEPTION):
-              expect(error).toBeDefined();
-
-              done();
-            });
-
-            /* ** XXX SKIP FOR NOW: {{{
-            // NOT EXPECTED - window.sqlitePlugin.deleteDatabase did not throw
-            expect(false).toBe(true);
-            done();
-            // ** }}} */
-          } catch (e) {
-            // XXX NOT EXPECTED in this plugin version:
-            // expect(true).toBe(true);
-            expect(false).toBe(true);
-
-            done();
-          }
-        }, MYTIMEOUT);
-
-        it(suiteName + 'sqlitePlugin.deleteDatabase with both location & iosDatabaseLocation settings (REJECTED with exception)', function(done) {
-          try {
-            window.sqlitePlugin.deleteDatabase({ name: 'my.db', location: 'default', iosDatabaseLocation: 2 }, function() {
-              // NOT EXPECTED:
               expect(false).toBe(true);
 
               // Close (plugin) & finish:
@@ -902,6 +855,69 @@ var mytests = function() {
 
               done();
             });
+
+            // XXX NOT EXPECTED TO GET HERE [window.sqlitePlugin.deleteDatabase did not throw]
+            expect(false).toBe(true);
+            // XXX ... and stop this test
+            done();
+          } catch (e) {
+            // EXPECTED RESULT: stopped by the implementation
+            expect(true).toBe(true);
+
+            done();
+          }
+        }, MYTIMEOUT);
+
+        it(suiteName + 'sqlitePlugin.deleteDatabase with string parameter (REJECTED AGAIN in this plugin version)', function(done) {
+          try {
+            window.sqlitePlugin.deleteDatabase('my.db', function() {
+              // XXX NOT EXPECTED (DID NOT REPORT EXCEPTION):
+              expect(false).toBe(true);
+
+              // Close (plugin) & finish:
+              db.close(done, done);
+            }, function(error) {
+              // XXX NO LONGER EXPECTED (...):
+              expect(false).toBe(true);
+              // XXX also check:
+              expect(error).toBeDefined();
+
+              done();
+            });
+
+            // NOT EXPECTED - window.sqlitePlugin.deleteDatabase did not throw
+            expect(false).toBe(true);
+            // XXX ... and stop this test
+            done();
+          } catch (e) {
+            // EXPECTED RESULT [REJECTED AGAIN] in this plugin version:
+            expect(e).toBeDefined();
+
+            done();
+          }
+        }, MYTIMEOUT);
+
+        it(suiteName + 'sqlitePlugin.deleteDatabase with both location & iosDatabaseLocation settings (REJECTED with exception)', function(done) {
+          try {
+            window.sqlitePlugin.deleteDatabase({ name: 'my.db', location: 'default', iosDatabaseLocation: 2 }, function() {
+              // XXX NOT EXPECTED (DID NOT REPORT EXCEPTION):
+              expect(false).toBe(true);
+
+              // Close (plugin) & finish:
+              db.close(done, done);
+            }, function(error) {
+              // XXX NOT EXPECTED (DID NOT REPORT EXCEPTION):
+              expect(false).toBe(true);
+              // XXX also check:
+              expect(error).toBeDefined();
+
+              done();
+            });
+
+            // XXX NOT EXPECTED - window.sqlitePlugin.deleteDatabase did not throw
+            expect(false).toBe(true);
+            // XXX ... and stop this test
+            done();
           } catch (e) {
             // EXPECTED RESULT: stopped by the implementation
             expect(true).toBe(true);
@@ -926,6 +942,11 @@ var mytests = function() {
 
               done();
             });
+
+            // XXX NOT EXPECTED - window.sqlitePlugin.deleteDatabase did not throw
+            expect(false).toBe(true);
+            // XXX ... and stop this test
+            done();
           } catch (e) {
             // EXPECTED RESULT: stopped by the implementation
             expect(true).toBe(true);
@@ -950,6 +971,11 @@ var mytests = function() {
 
               done();
             });
+
+            // XXX NOT EXPECTED - window.sqlitePlugin.deleteDatabase did not throw
+            expect(false).toBe(true);
+            // XXX ... and stop this test
+            done();
           } catch (e) {
             // EXPECTED RESULT: stopped by the implementation
             expect(true).toBe(true);
@@ -974,6 +1000,11 @@ var mytests = function() {
 
               done();
             });
+
+            // XXX NOT EXPECTED - window.sqlitePlugin.deleteDatabase did not throw
+            expect(false).toBe(true);
+            // XXX ... and stop this test
+            done();
           } catch (e) {
             // EXPECTED RESULT: stopped by the implementation
             expect(true).toBe(true);
@@ -998,6 +1029,11 @@ var mytests = function() {
 
               done();
             });
+
+            // XXX NOT EXPECTED - window.sqlitePlugin.deleteDatabase did not throw
+            expect(false).toBe(true);
+            // XXX ... and stop this test
+            done();
           } catch (e) {
             // EXPECTED RESULT: stopped by the implementation
             expect(true).toBe(true);
@@ -1024,6 +1060,11 @@ var mytests = function() {
 
               done();
             });
+
+            // XXX NOT EXPECTED - window.sqlitePlugin.deleteDatabase did not throw
+            expect(false).toBe(true);
+            // XXX ... and stop this test
+            done();
           } catch (e) {
             // EXPECTED RESULT: stopped by the implementation
             expect(true).toBe(true);
@@ -1050,6 +1091,11 @@ var mytests = function() {
 
               done();
             });
+
+            // XXX NOT EXPECTED - window.sqlitePlugin.deleteDatabase did not throw
+            expect(false).toBe(true);
+            // XXX ... and stop this test
+            done();
           } catch (e) {
             // EXPECTED RESULT: stopped by the implementation
             expect(true).toBe(true);

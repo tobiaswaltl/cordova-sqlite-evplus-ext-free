@@ -754,8 +754,9 @@
 
         # XXX TBD HACKISH:
         if args[0].constructor == String
-          openargs = { name: args[0] }
-          args = [openargs]
+          # openargs = { name: args[0] }
+          # args = [openargs]
+          throw newSQLError 'ERROR: first openDatabase argument must be an object'
 
         else
           openargs = args[0]
@@ -764,9 +765,9 @@
         if !openargs.name
           throw newSQLError 'Database name value is missing in openDatabase call'
 
-        # XXX TBD database location setting may be MANDATORY in the near future:
-        # if !openargs.iosDatabaseLocation and !openargs.location and openargs.location isnt 0
-        #   throw newSQLError 'Database location or iosDatabaseLocation setting is now mandatory in openDatabase call.'
+        # Database location setting is MANDATORY again (affects iOS/macOS ONLY):
+        if !openargs.iosDatabaseLocation and !openargs.location and openargs.location isnt 0
+          throw newSQLError 'Database location or iosDatabaseLocation setting is now mandatory in openDatabase call.'
 
         if !!openargs.location and !!openargs.iosDatabaseLocation
           throw newSQLError 'AMBIGUOUS: both location and iosDatabaseLocation settings are present in openDatabase call. Please use either setting, not both.'
@@ -814,9 +815,10 @@
 
         if first.constructor == String
           # XXX TBD HACKISH:
-          dbname = first
-          first = { location: 'default' }
-          args.path = dbname
+          # dbname = first
+          # first = { location: 'default' }
+          # args.path = dbname
+          throw newSQLError 'ERROR: first deleteDatabase argument must be an object'
 
         else
           #console.log "delete db args: #{JSON.stringify first}"
@@ -831,9 +833,9 @@
           #args.dblocation = dblocation || dblocations[0]
           #args.dblocation = dblocation || dblocations[2]
 
-        # XXX TBD database location setting may be MANDATORY in the near future:
-        # if !first.iosDatabaseLocation and !first.location and first.location isnt 0
-        #   throw newSQLError 'Database location or iosDatabaseLocation setting is now mandatory in deleteDatabase call.'
+        # Database location setting is MANDATORY again (affects iOS/macOS ONLY):
+        if !first.iosDatabaseLocation and !first.location and first.location isnt 0
+          throw newSQLError 'Database location or iosDatabaseLocation setting is now mandatory in deleteDatabase call.'
 
         if !!first.location and !!first.iosDatabaseLocation
           throw newSQLError 'AMBIGUOUS: both location and iosDatabaseLocation settings are present in deleteDatabase call. Please use either setting value, not both.'

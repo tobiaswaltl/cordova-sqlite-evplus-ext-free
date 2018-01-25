@@ -710,16 +710,6 @@ See the [Sample section](#sample) for a sample with detailed explanations.
 
 To open a database access handle object (in the **new** default location):
 
-<!-- XXX DEPRECATED:
-```js
-var db = window.sqlitePlugin.openDatabase({name: 'my.db'}, successcb, errorcb);
-```
-
-or
- -->
-
-_with `location` or `iosDatabaseLocation` parameter RECOMMENDED (possibly MANDATORY in the near future), `iosDatabaseLocation` option described below (affects iOS/macOS ONLY)_
-
 ```js
 var db = window.sqlitePlugin.openDatabase({name: 'my.db', location: 'default'}, successcb, errorcb);
 ```
@@ -741,16 +731,16 @@ where the `iosDatabaseLocation` option may be set to one of the following choice
 
 **WARNING:** Again, the new "default" iosDatabaseLocation value is *NOT* the same as the old default location and would break an upgrade for an app using the old default value (0) on iOS.
 
-_DEPRECATED alternatives (may be removed in the near future):_
-
-- `var db = window.sqlitePlugin.openDatabase("myDatabase.db", "1.0", "Demo", -1);` // XXX SEE TIP BELOW HOW TO OVERWRITE `window.openDatabase`
+DEPRECATED alternative:
 
 - `var db = window.sqlitePlugin.openDatabase({name: "my.db", location: 1}, successcb, errorcb);`
 
 with the `location` option set to one the following choices (affects iOS *only*):
-- `0`: `Documents` - visible to iTunes and backed up by iCloud
+- `0` ~~(old default)~~: `Documents` - visible to iTunes and backed up by iCloud
 - `1`: `Library` - backed up by iCloud, *NOT* visible to iTunes
-- `2` (new default): `Library/LocalDatabase` - *NOT* visible to iTunes and *NOT* backed up by iCloud (same as using "default")
+- `2` (_new default_): `Library/LocalDatabase` - _NOT_ visible to iTunes and _NOT_ backed up by iCloud (same as using "default")
+
+NO LONGER SUPPORTED (see tip below to overwrite `window.openDatabase`): ~~`var db = window.sqlitePlugin.openDatabase("myDatabase.db", "1.0", "Demo", -1);`~~
 
 **IMPORTANT:** Please wait for the 'deviceready' event, as in the following example:
 
@@ -1186,25 +1176,13 @@ db.executeSql("SELECT LENGTH('tenletters') AS stringlength", [], function (res) 
 
 ## Delete a database
 
-<!-- XXX DEPRECATED:
-```js
-window.sqlitePlugin.deleteDatabase({name: 'my.db'}, successcb, errorcb);
-```
-
-or
- -->
-
 ```js
 window.sqlitePlugin.deleteDatabase({name: 'my.db', location: 'default'}, successcb, errorcb);
 ```
 
-with `location` or `iosDatabaseLocation` parameter _RECOMMENDED (possibly MANDATORY in the near future)_ as described above for `openDatabase` (affects iOS/macOS *only*)
+with `location` or `iosDatabaseLocation` parameter MANDATORY as described above for `openDatabase` (affects iOS/macOS ONLY)
 
-_DEPRECATED (may be removed in the near future):_
-
-```js
-window.sqlitePlugin.deleteDatabase(name: 'my.db', successcb, errorcb);
-```
+NO LONGER SUPPORTED: ~~`window.sqlitePlugin.deleteDatabase(name: 'my.db', successcb, errorcb);`~~
 
 **BUG:** When a database is deleted, any queued transactions for that database are left hanging. TODO: All pending transactions should be errored when a database is deleted.
 

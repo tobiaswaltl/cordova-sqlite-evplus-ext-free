@@ -1,5 +1,9 @@
 # Changes
 
+# cordova-sqlite-evplus-ext-free 0.3.0-dev1
+
+- openDatabase/deleteDatabase location setting is MANDATORY again
+
 # cordova-sqlite-evplus-ext-free 0.2.1
 
 ## cordova-sqlite-evcore-legacy-ext-common-free 0.0.1

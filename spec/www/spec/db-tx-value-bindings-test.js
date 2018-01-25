@@ -47,9 +47,9 @@ var mytests = function() {
         if (isWebSql) {
           return window.openDatabase(name, '1.0', 'Test', DEFAULT_SIZE);
         } else {
-          // XXX explicit database location NOT NEEDED in this plugin version:
-          // return window.sqlitePlugin.openDatabase({name: name, location: 'default'});
-          return window.sqlitePlugin.openDatabase(name, '1.0', 'Demo', -1);
+          // EXPLICIT database location REQUIRED AGAIN in this plugin version:
+          // return window.sqlitePlugin.openDatabase(name, '1.0', 'Demo', -1);
+          return window.sqlitePlugin.openDatabase({name: name, location: 'default'});
         }
       }
 

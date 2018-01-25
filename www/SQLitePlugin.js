@@ -692,15 +692,15 @@ Contact for commercial license: info@litehelpers.net
         throw newSQLError('Sorry missing mandatory open arguments object in openDatabase call');
       }
       if (args[0].constructor === String) {
-        openargs = {
-          name: args[0]
-        };
-        args = [openargs];
+        throw newSQLError('ERROR: first openDatabase argument must be an object');
       } else {
         openargs = args[0];
       }
       if (!openargs.name) {
         throw newSQLError('Database name value is missing in openDatabase call');
+      }
+      if (!openargs.iosDatabaseLocation && !openargs.location && openargs.location !== 0) {
+        throw newSQLError('Database location or iosDatabaseLocation setting is now mandatory in openDatabase call.');
       }
       if (!!openargs.location && !!openargs.iosDatabaseLocation) {
         throw newSQLError('AMBIGUOUS: both location and iosDatabaseLocation settings are present in openDatabase call. Please use either setting, not both.');
@@ -733,11 +733,7 @@ Contact for commercial license: info@litehelpers.net
       var args, dblocation, dbname;
       args = {};
       if (first.constructor === String) {
-        dbname = first;
-        first = {
-          location: 'default'
-        };
-        args.path = dbname;
+        throw newSQLError('ERROR: first deleteDatabase argument must be an object');
       } else {
         if (!(first && first['name'])) {
           throw new Error("Please specify db name");
@@ -747,6 +743,9 @@ Contact for commercial license: info@litehelpers.net
           throw newSQLError('delete database name must be a string');
         }
         args.path = dbname;
+      }
+      if (!first.iosDatabaseLocation && !first.location && first.location !== 0) {
+        throw newSQLError('Database location or iosDatabaseLocation setting is now mandatory in deleteDatabase call.');
       }
       if (!!first.location && !!first.iosDatabaseLocation) {
         throw newSQLError('AMBIGUOUS: both location and iosDatabaseLocation settings are present in deleteDatabase call. Please use either setting value, not both.');
