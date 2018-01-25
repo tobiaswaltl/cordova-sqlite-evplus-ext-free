@@ -141,7 +141,6 @@ See the [Sample section](#sample) for a sample with a more detailed explanation.
   - `SQLITE_ENABLE_FTS3_PARENTHESIS`
   - `SQLITE_ENABLE_FTS4`
   - `SQLITE_ENABLE_RTREE`
-  - `SQLITE_ENABLE_COLUMN_METADATA` _(iOS/macOS/Windows - TBD NOT NEEDED by this plugin)_
   - `SQLITE_OS_WINRT` (Windows only)
   - `NDEBUG` on Windows (Release build only)
   - _TODO: explicit `SQLITE_DEFAULT_PAGE_SIZE` and `SQLITE_DEFAULT_CACHE_SIZE` settings needed in this plugin version branch (default values recently changed as described in <http://sqlite.org/pgszchng2016.html>)_

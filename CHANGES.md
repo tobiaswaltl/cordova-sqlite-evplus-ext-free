@@ -1,7 +1,8 @@
 # Changes
 
-# cordova-sqlite-evplus-ext-free 0.3.0-dev1
+# cordova-sqlite-evplus-ext-free 0.3.0-dev2
 
+- Remove SQLITE_ENABLE_COLUMN_METADATA compile-time option not needed (iOS/macOS/Windows)
 - openDatabase/deleteDatabase location setting is MANDATORY again
 
 # cordova-sqlite-evplus-ext-free 0.2.1
