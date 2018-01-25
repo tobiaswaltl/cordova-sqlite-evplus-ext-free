@@ -504,7 +504,7 @@ var mytests = function() {
           } catch (e) {
             // XXX NOT EXPECTED in this plugin version:
             expect(false).toBe(true);
-            // XXX ...
+            // XXX also check:
             expect(e).toBeDefined();
             done();
           }
@@ -524,8 +524,10 @@ var mytests = function() {
               expect(false).toBe(true);
               done();
             }, function(error) {
-              // OK but NOT EXPECTED:
-              expect('Behavior changed, please update this test').toBe('--');
+              // XXX NOT EXPECTED (DID NOT REPORT EXCEPTION):
+              expect(false).toBe(true);
+              // XXX also check:
+              expect(error).toBeDefined();
               done();
             });
           } catch (e) {
@@ -545,8 +547,10 @@ var mytests = function() {
               // Close (plugin) & finish:
               db.close(done, done);
             }, function(error) {
-              // OK but NOT EXPECTED:
-              expect('Behavior changed, please update this test').toBe('--');
+              // XXX NOT EXPECTED (DID NOT REPORT EXCEPTION):
+              expect(false).toBe(true);
+              // XXX also check:
+              expect(error).toBeDefined();
 
               done();
             });
@@ -572,8 +576,10 @@ var mytests = function() {
               // Close (plugin) & finish:
               db.close(done, done);
             }, function(error) {
-              // OK but NOT EXPECTED:
-              expect('Behavior changed, please update this test').toBe('--');
+              // XXX NOT EXPECTED (DID NOT REPORT EXCEPTION):
+              expect(false).toBe(true);
+              // XXX also check:
+              expect(error).toBeDefined();
 
               done();
             });
@@ -594,8 +600,10 @@ var mytests = function() {
               // Close (plugin) & finish:
               db.close(done, done);
             }, function(error) {
-              // OK but NOT EXPECTED:
-              expect('Behavior changed, please update this test').toBe('--');
+              // XXX NOT EXPECTED (DID NOT REPORT EXCEPTION):
+              expect(false).toBe(true);
+              // XXX also check:
+              expect(error).toBeDefined();
 
               done();
             });
@@ -619,8 +627,10 @@ var mytests = function() {
               // Close (plugin) & finish:
               db.close(done, done);
             }, function(error) {
-              // OK but NOT EXPECTED:
-              expect('Behavior changed, please update this test').toBe('--');
+              // XXX NOT EXPECTED (DID NOT REPORT EXCEPTION):
+              expect(false).toBe(true);
+              // XXX also check:
+              expect(error).toBeDefined();
 
               done();
             });
@@ -641,8 +651,10 @@ var mytests = function() {
               // Close (plugin) & finish:
               db.close(done, done);
             }, function(error) {
-              // OK but NOT EXPECTED:
-              expect('Behavior changed, please update this test').toBe('--');
+              // XXX NOT EXPECTED (DID NOT REPORT EXCEPTION):
+              expect(false).toBe(true);
+              // XXX also check:
+              expect(error).toBeDefined();
 
               done();
             });
@@ -660,14 +672,18 @@ var mytests = function() {
               name: 'open-iosDatabaseLocation-3.db',
               iosDatabaseLocation: 3
           }, function(db) {
-              // NOT EXPECTED:
+              // XXX NOT EXPECTED (DID NOT REPORT EXCEPTION):
               expect(false).toBe(true);
+              // XXX also check:
+              expect(error).toBeDefined();
 
               // Close (plugin) & finish:
               db.close(done, done);
             }, function(error) {
-              // OK but NOT EXPECTED:
-              expect('Behavior changed, please update this test').toBe('--');
+              // XXX NOT EXPECTED (DID NOT REPORT EXCEPTION):
+              expect(false).toBe(true);
+              // XXX also check:
+              expect(error).toBeDefined();
 
               done();
             });
@@ -691,8 +707,10 @@ var mytests = function() {
               // Close (plugin) & finish:
               db.close(done, done);
             }, function(error) {
-              // OK but NOT EXPECTED:
-              expect('Behavior changed, please update this test').toBe('--');
+              // XXX NOT EXPECTED (DID NOT REPORT EXCEPTION):
+              expect(false).toBe(true);
+              // XXX also check:
+              expect(error).toBeDefined();
 
               done();
             });
@@ -716,8 +734,10 @@ var mytests = function() {
               // Close (plugin) & finish:
               db.close(done, done);
             }, function(error) {
-              // OK but NOT EXPECTED:
-              expect('Behavior changed, please update this test').toBe('--');
+              // XXX NOT EXPECTED (DID NOT REPORT EXCEPTION):
+              expect(false).toBe(true);
+              // XXX also check:
+              expect(error).toBeDefined();
 
               done();
             });
@@ -739,8 +759,10 @@ var mytests = function() {
               // Close (plugin) & finish:
               db.close(done, done);
             }, function(error) {
-              // OK but NOT EXPECTED:
-              expect('Behavior changed, please update this test').toBe('--');
+              // XXX NOT EXPECTED (DID NOT REPORT EXCEPTION):
+              expect(false).toBe(true);
+              // XXX also check:
+              expect(error).toBeDefined();
               done();
             });
           } catch (e) {
@@ -764,8 +786,10 @@ var mytests = function() {
               // Close (plugin) & finish:
               db.close(done, done);
             }, function(error) {
-              // OK but NOT EXPECTED:
-              expect('Behavior changed, please update this test').toBe('--');
+              // XXX NOT EXPECTED (DID NOT REPORT EXCEPTION):
+              expect(false).toBe(true);
+              // XXX also check:
+              expect(error).toBeDefined();
 
               done();
             });
@@ -871,7 +895,10 @@ var mytests = function() {
               // Close (plugin) & finish:
               db.close(done, done);
             }, function(error) {
-              expect('Behavior changed, please update this test').toBe('--');
+              // XXX NOT EXPECTED (DID NOT REPORT EXCEPTION):
+              expect(false).toBe(true);
+              // XXX also check:
+              expect(error).toBeDefined();
 
               done();
             });
@@ -892,7 +919,10 @@ var mytests = function() {
               // Close (plugin) & finish:
               db.close(done, done);
             }, function(error) {
-              expect('Behavior changed, please update this test').toBe('--');
+              // XXX NOT EXPECTED (DID NOT REPORT EXCEPTION):
+              expect(false).toBe(true);
+              // XXX also check:
+              expect(error).toBeDefined();
 
               done();
             });
@@ -913,7 +943,10 @@ var mytests = function() {
               // Close (plugin) & finish:
               db.close(done, done);
             }, function(error) {
-              expect('Behavior changed, please update this test').toBe('--');
+              // XXX NOT EXPECTED (DID NOT REPORT EXCEPTION):
+              expect(false).toBe(true);
+              // XXX also check:
+              expect(error).toBeDefined();
 
               done();
             });
@@ -934,7 +967,10 @@ var mytests = function() {
               // Close (plugin) & finish:
               db.close(done, done);
             }, function(error) {
-              expect('Behavior changed, please update this test').toBe('--');
+              // XXX NOT EXPECTED (DID NOT REPORT EXCEPTION):
+              expect(false).toBe(true);
+              // XXX also check:
+              expect(error).toBeDefined();
 
               done();
             });
@@ -955,7 +991,10 @@ var mytests = function() {
               // Close (plugin) & finish:
               db.close(done, done);
             }, function(error) {
-              expect('Behavior changed, please update this test').toBe('--');
+              // XXX NOT EXPECTED (DID NOT REPORT EXCEPTION):
+              expect(false).toBe(true);
+              // XXX also check:
+              expect(error).toBeDefined();
 
               done();
             });
@@ -978,7 +1017,10 @@ var mytests = function() {
               // Close (plugin) & finish:
               db.close(done, done);
             }, function(error) {
-              expect('Behavior changed, please update this test').toBe('--');
+              // XXX NOT EXPECTED (DID NOT REPORT EXCEPTION):
+              expect(false).toBe(true);
+              // XXX also check:
+              expect(error).toBeDefined();
 
               done();
             });
@@ -1001,7 +1043,10 @@ var mytests = function() {
               // Close (plugin) & finish:
               db.close(done, done);
             }, function(error) {
-              expect('Behavior changed, please update this test').toBe('--');
+              // XXX NOT EXPECTED (DID NOT REPORT EXCEPTION):
+              expect(false).toBe(true);
+              // XXX also check:
+              expect(error).toBeDefined();
 
               done();
             });
