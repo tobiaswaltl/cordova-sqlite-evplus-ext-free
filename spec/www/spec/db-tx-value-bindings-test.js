@@ -1350,8 +1350,15 @@ var mytests = function() {
                     // we would like to know, so the test is coded to fail if it starts
                     // working there.
 
-                    if (isWindows || (isWebSql && !(/Android [5-9]/.test(navigator.userAgent)))) {
-                      // XXX TRUNCATION ISSUE on Windows/???:
+                    //* if (isWindows || (isWebSql && !(/Android [5-9]/.test(navigator.userAgent)))) {
+                    //*   expect(name.length).toBe(1);
+                    //*   expect(name).toBe('a');
+                    //* } // else ...
+                    if (isWebSql) {
+                      expect(name.length).toBe(1);
+                      expect(name).toBe('a');
+                    } else if (isWindows) {
+                      // XXX BUG on Windows:
                       expect(name.length).toBe(1);
                       expect(name).toBe('a');
                     } else if (!isWindows && isAndroid && !isImpl2) {

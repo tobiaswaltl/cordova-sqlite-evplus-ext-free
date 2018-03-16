@@ -443,7 +443,7 @@ var mytests = function() {
 
         it(suiteName + "INLINE string vertical tab test", function(done) {
           // if (isWP8) pending('...'); // XXX GONE
-          if (isAndroid && !isWebSql && !isImpl2) pending('XXX SKIP: BUG on Android (default Android-sqlite-evcore-native-driver access implementation)'); // XXX ref: litehelpers/Cordova-sqlite-evcore-extbuild-free#28
+          if (!isWebSql && !isWindows && isAndroid && !isImpl2) pending('XXX SKIP: BUG on Android (default Android-sqlite-evcore-native-driver access implementation)'); // XXX ref: litehelpers/Cordova-sqlite-evcore-extbuild-free#28
 
           var db = openDatabase("String-vertical-tab-test.db", "1.0", "Demo", DEFAULT_SIZE);
           expect(db).toBeDefined();
@@ -484,7 +484,7 @@ var mytests = function() {
 
         it(suiteName + "INLINE string form feed test", function(done) {
           // if (isWP8) pending('...'); // XXX GONE
-          if (isAndroid && !isWebSql && !isImpl2) pending('XXX SKIP: BUG on Android (default Android-sqlite-evcore-native-driver access implementation)'); // XXX ref: litehelpers/Cordova-sqlite-evcore-extbuild-free#28
+          if (!isWebSql && !isWindows && isAndroid && !isImpl2) pending('XXX SKIP: BUG on Android (default Android-sqlite-evcore-native-driver access implementation)'); // XXX ref: litehelpers/Cordova-sqlite-evcore-extbuild-free#28
 
           var db = openDatabase("String-form-feed-test.db", "1.0", "Demo", DEFAULT_SIZE);
           expect(db).toBeDefined();
@@ -525,7 +525,7 @@ var mytests = function() {
 
         it(suiteName + "INLINE string backspace test", function(done) {
           // if (isWP8) pending('...'); // XXX GONE
-          if (isAndroid && !isWebSql && !isImpl2) pending('XXX SKIP: BUG on Android (default Android-sqlite-evcore-native-driver access implementation)'); // XXX ref: litehelpers/Cordova-sqlite-evcore-extbuild-free#28
+          if (!isWebSql && !isWindows && isAndroid && !isImpl2) pending('XXX SKIP: BUG on Android (default Android-sqlite-evcore-native-driver access implementation)'); // XXX ref: litehelpers/Cordova-sqlite-evcore-extbuild-free#28
 
           var db = openDatabase("String-backspace-test.db", "1.0", "Demo", DEFAULT_SIZE);
           expect(db).toBeDefined();

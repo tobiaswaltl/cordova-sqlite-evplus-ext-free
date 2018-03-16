@@ -1,5 +1,19 @@
 # Changes
 
+# cordova-sqlite-evplus-ext-free 0.3.0
+
+### cordova-sqlite-evcore-legacy-ext-common-free 0.0.4
+
+- additional evcore iOS/macOS/Windows compile-time options
+
+## cordova-sqlite-evcore-extbuild-free 0.9.4
+
+- Android evcore NDK JAR from cordova-sqlite-evcore-free-dependencies 0.8.0, no longer using JSMN component
+
+## cordova-sqlite-evcore-extbuild-free 0.9.3
+
+- cordova-sqlite-evcore-extbuild-free with SQLITE_THREADSAFE=1 on iOS/macOS ref: litehelpers/Cordova-sqlite-storage#754 (<https://github.com/litehelpers/Cordova-sqlite-storage/issues/754>)
+
 # cordova-sqlite-evplus-ext-free 0.3.0-pre1
 
 - Remove SQLITE_ENABLE_COLUMN_METADATA compile-time option not needed (iOS/macOS/Windows)
