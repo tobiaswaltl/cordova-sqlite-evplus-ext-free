@@ -30,7 +30,7 @@ var mytests = function() {
 
   for (var i=0; i<scenarioCount; ++i) {
 
-    describe(scenarioList[i] + ': tx stored value bindings test(s)', function() {
+    describe(scenarioList[i] + ': tx value bindings (stored value bindings) test(s)', function() {
       var scenarioName = scenarioList[i];
       var suiteName = scenarioName + ': ';
       var isWebSql = (i === 1);
@@ -106,8 +106,7 @@ var mytests = function() {
         }, MYTIMEOUT);
 
         it(suiteName + 'INSERT TEXT string with é (UTF-8 2 octets), SELECT the data, check, and check HEX value [UTF-16le on Windows]', function(done) {
-          if (isAndroid && !isWebSql && !isImpl2) pending('XXX SKIP: BUG on Android (default Android-sqlite-evcore-native-driver access implementation)'); // XXX ref: litehelpers/Cordova-sqlite-evcore-extbuild-free#19
-
+          // ref: litehelpers/Cordova-sqlite-evcore-extbuild-free#19
           var db = openDatabase('INSERT-UTF8-2-octets-and-check.db', '1.0', 'Demo', DEFAULT_SIZE);
 
           db.transaction(function(tx) {
@@ -147,8 +146,7 @@ var mytests = function() {
         }, MYTIMEOUT);
 
         it(suiteName + 'INSERT TEXT string with € (UTF-8 3 octets), SELECT the data, check, and check HEX value [UTF-16le on Windows]', function(done) {
-          if (isAndroid && !isWebSql && !isImpl2) pending('XXX SKIP: BUG on Android (default Android-sqlite-evcore-native-driver access implementation)'); // XXX ref: litehelpers/Cordova-sqlite-evcore-extbuild-free#19
-
+          // ref: litehelpers/Cordova-sqlite-evcore-extbuild-free#19
           var db = openDatabase('INSERT-UTF8-3-octets-and-check.db', '1.0', 'Demo', DEFAULT_SIZE);
 
           db.transaction(function(tx) {
@@ -1326,10 +1324,8 @@ var mytests = function() {
           });
         }, MYTIMEOUT);
 
-        it(suiteName + ' returns [Unicode] string with \\u0000 (same as \\0) correctly [XXX TRUNCATION ISSUE on Windows/???; INCORRECT VALUE BUG on Android (default evcore-native-driver database access implementation)]', function (done) {
+        it(suiteName + ' returns [Unicode] string with \\u0000 (same as \\0) correctly [XXX BUG on Android & Windows: TRUNCATION on Windows; INCORRECT VALUE on Android (default evcore-native-driver database access implementation)]', function (done) {
           // if (isWP8) pending('...'); // XXX GONE
-          if (!isWebSql && !isWindows && isAndroid && !isImpl2) pending('XXX SKIP DUE TO BUG on Android (default evcore-native-driver implementation)'); // [FUTURE TBD (documented)]
-          if (isWebSql && isAndroid) pending('SKIP for Android (WebKit Web SQL)') // XXX TBD ...
 
           var db = openDatabase('UNICODE-retrieve-u0000-test.db');
 
@@ -1340,6 +1336,10 @@ var mytests = function() {
                   tx.executeSql('SELECT name FROM test', [], function (tx_ignored, rs) {
                     var name = rs.rows.item(0).name;
 
+                    // TRUNCATION BUG
+                    //
+                    // BUG on (WebKit) Web SQL:
+                    //
                     // There is a bug in WebKit and Chromium where strings are created
                     // using methods that rely on '\0' for termination instead of
                     // the specified byte length.
@@ -1349,19 +1349,19 @@ var mytests = function() {
                     // For now we expect this test to fail there, but when it is fixed
                     // we would like to know, so the test is coded to fail if it starts
                     // working there.
+                    //
+                    // UPDATE: SEEMS TO BE FIXED on newer versions of Android
+                    //
+                    // BUG on this plugin:
+                    //
+                    // TRUNCATION BUG REPRODUCED on Windows
 
-                    //* if (isWindows || (isWebSql && !(/Android [5-9]/.test(navigator.userAgent)))) {
-                    //*   expect(name.length).toBe(1);
-                    //*   expect(name).toBe('a');
-                    //* } // else ...
-                    if (isWebSql) {
+                    if ((isWebSql && isAndroid && (/Android [2-4]/.test(navigator.userAgent))) ||
+                        (isWebSql && !isAndroid) ||
+                        (!isWebSql && isWindows)) {
                       expect(name.length).toBe(1);
                       expect(name).toBe('a');
-                    } else if (isWindows) {
-                      // XXX BUG on Windows:
-                      expect(name.length).toBe(1);
-                      expect(name).toBe('a');
-                    } else if (!isWindows && isAndroid && !isImpl2) {
+                    } else if (!isWebSql && !isWindows && isAndroid && !isImpl2) { // XXX BUG
                       // XXX BUG on Android (default evcore-native-driver database access implementation):
                       expect(name.length).toBe(7);
                       expect(name).toBe('a0000cd');
