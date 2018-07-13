@@ -230,7 +230,6 @@ var mytests = function() {
             tx1.executeSql('CREATE TABLE IF NOT EXISTS test1 (x int)');
           });
 
-
           var db2 = openDatabase("DB2", "1.0", "Demo", DEFAULT_SIZE);
           db2.transaction(function (tx2) {
             tx2.executeSql('CREATE TABLE IF NOT EXISTS test2 (x int)');

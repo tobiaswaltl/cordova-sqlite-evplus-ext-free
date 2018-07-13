@@ -178,7 +178,7 @@ public class SQLitePlugin extends CordovaPlugin {
                 JSONArray txargs = allargs.getJSONArray("executes");
 
                 if (txargs.isNull(0)) {
-                    cbc.error("missing executes list");
+                    cbc.error("INTERNAL PLUGIN ERROR: missing executes list");
                 } else {
                     int len = txargs.length();
                     String[] queries = new String[len];
@@ -198,10 +198,10 @@ public class SQLitePlugin extends CordovaPlugin {
                             r.q.put(q);
                         } catch(Exception e) {
                             Log.e(SQLitePlugin.class.getSimpleName(), "couldn't add to queue", e);
-                            cbc.error("couldn't add to queue");
+                            cbc.error("INTERNAL PLUGIN ERROR: couldn't add to queue");
                         }
                     } else {
-                        cbc.error("database not open");
+                        cbc.error("INTERNAL PLUGIN ERROR: database not open");
                     }
                 }
                 break;

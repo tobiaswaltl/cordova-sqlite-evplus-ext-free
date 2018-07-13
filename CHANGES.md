@@ -1,8 +1,34 @@
 # Changes
 
-# cordova-sqlite-evplus-ext-free 0.3.2-dev+01
+# cordova-sqlite-evplus-ext-free 0.3.2
 
 - Update URLs of this plugin fork in package.json
+
+## cordova-plugin-sqlite-evplus-ext-common-free 0.1.1
+
+- additional performance enhancements for evplus to reduce the amount of looping in the JavaScript
+
+## cordova-plugin-sqlite-evplus-ext-common-free 0.1.0
+
+### cordova-sqlite-evcore-common-free 0.0.1
+
+#### cordova-sqlite-storage 2.3.3
+
+- Quick fix for some iOS/macOS internal plugin error log messagess
+- test updates
+- quick doc updates
+
+#### cordova-sqlite-storage 2.3.2
+
+- Mark some Android errors as internal plugin errors (quick fix)
+- remove trailing whitespace from Android implementation
+- test coverage updates
+- quick doc updates
+
+#### cordova-sqlite-storage 2.3.1
+
+- Mark some iOS/macOS plugin error messages as internal plugin errors (quick fix)
+- Quick documentation updates
 
 # cordova-sqlite-evplus-ext-free 0.3.1
 
@@ -13,7 +39,7 @@
   - litehelpers/Android-sqlite-evcore-native-driver-free#1 (<https://github.com/litehelpers/Android-sqlite-evcore-native-driver-free/pull/1>)
   - litehelpers/Android-sqlite-evcore-native-driver-free#2 (<https://github.com/litehelpers/Android-sqlite-evcore-native-driver-free/pull/2>)
 
-### cordova-sqlite-storage 2.2.1
+#### cordova-sqlite-storage 2.2.1
 
 - Fix Android/iOS src copyright, perpetually
 
