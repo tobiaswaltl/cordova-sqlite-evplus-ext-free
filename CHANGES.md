@@ -1,5 +1,9 @@
 # Changes
 
+# cordova-sqlite-evplus-ext-free 0.3.2-dev+01
+
+- Update URLs of this plugin fork in package.json
+
 # cordova-sqlite-evplus-ext-free 0.3.1
 
 ## cordova-sqlite-evcore-extbuild-free 0.9.7
