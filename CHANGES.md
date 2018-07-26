@@ -1,5 +1,11 @@
 # Changes
 
+# cordova-sqlite-evplus-ext-free 0.3.3
+
+## cordova-plugin-sqlite-evplus-ext-common-free 0.1.2
+
+- include premium JSON improvements for iOS/macOS
+
 # cordova-sqlite-evplus-ext-free 0.3.2
 
 - Update URLs of this plugin fork in package.json
