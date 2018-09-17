@@ -1,5 +1,9 @@
 # Changes
 
+# cordova-sqlite-evplus-ext-free 0.3.4
+
+- Fix stack overflow
+
 # cordova-sqlite-evplus-ext-free 0.3.3
 
 ## cordova-plugin-sqlite-evplus-ext-common-free 0.1.2
